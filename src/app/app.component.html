@@ -3,21 +3,19 @@
 
 <img src="{{ url }}" alt="" /> -->
 
-<p *ngIf="name">El nombre es: {{ name }}</p>
-<input type="text" [ngModel]="name" (ngModelChange)="name = $event" />
+<!-- <p *ngIf="name">El nombre es: {{ name }}</p> -->
+<!-- <input type="text" [ngModel]="name" (ngModelChange)="name = $event" /> -->
 
 <ul *ngFor="let city of cities">
-  <!-- <li [ngClass]="['selected', 'blue']">{{ city }}</li> -->
-  <li [ngClass]="{ selected: city === 'Granada', blue: city !== 'Granada' }">
-    {{ city }}
-    <!-- <li
-    [ngStyle]="{
-      color: 'red',
-      'background-color': city === 'Granada' ? 'blue' : 'green'
-    }"
+  <li
+    (click)="onCityClicked(city)"
+    [ngClass]="{ selected: city === selection }"
   >
     {{ city }}
-  </li> -->
-    <!-- <li ngClass="selected">{{ city }}</li> -->
   </li>
 </ul>
+
+<div>
+  <p *ngIf="selection">Your city is: {{ selection }}</p>
+  <button *ngIf="selection" (click)="onClear()">Clear your selection</button>
+</div>
