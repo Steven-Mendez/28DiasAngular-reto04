@@ -1,4 +1,7 @@
-<p>{{ title }} con Angular</p>
+<!-- <p>{{ title }} con Angular</p>
 <p>Total: {{ 5 + 5 }}</p>
 
-<img src="{{ url }}" alt="" />
+<img src="{{ url }}" alt="" /> -->
+
+<p>El nombre es: {{ name }}</p>
+<input type="text" [ngModel]="name" (ngModelChange)="name = $event" />
