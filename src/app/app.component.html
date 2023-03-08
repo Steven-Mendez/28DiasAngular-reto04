@@ -1,21 +1,32 @@
-<!-- <p>{{ title }} con Angular</p>
-<p>Total: {{ 5 + 5 }}</p>
-
-<img src="{{ url }}" alt="" /> -->
-
-<!-- <p *ngIf="name">El nombre es: {{ name }}</p> -->
-<!-- <input type="text" [ngModel]="name" (ngModelChange)="name = $event" /> -->
-
-<ul *ngFor="let city of cities">
-  <li
-    (click)="onCityClicked(city)"
-    [ngClass]="{ selected: city === selection }"
-  >
-    {{ city }}
-  </li>
-</ul>
-
-<div>
-  <p *ngIf="selection">Your city is: {{ selection }}</p>
-  <button *ngIf="selection" (click)="onClear()">Clear your selection</button>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <app-form-new-item
+        (newItemEvent)="addNewCity($event)"
+        [label]="'City'"
+        [className]="'btn-secondary'"
+      ></app-form-new-item>
+    </div>
+    <div class="col-md-8">
+      <ul>
+        <li
+          *ngFor="let city of cities"
+          (click)="onCityClicked(city)"
+          [ngClass]="{ 'alert alert-info': city === selection }"
+        >
+          {{ city }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <div *ngIf="selection">
+        <p>Your city is: {{ selection }}</p>
+        <app-button
+          (click)="onClear()"
+          [color]="'blue'"
+          [label]="'Clear your selection'"
+        ></app-button>
+      </div>
+    </div>
+  </div>
 </div>
